@@ -1,0 +1,339 @@
+.menu{
+  box-sizing:border-box; /* для exprorer */
+  position:fixed; 
+  width:100%;
+  z-index:100;
+  background: rgba(0,0,0,.5);
+}
+
+
+.menu_list{
+  text-align:center;
+  padding-left:0; /* внутренние отступы слева*/
+  margin-top:0;    /* внешние отступы сверху*/
+  margin-bottom:0;  /* внешние отступы снизу*/
+  list-style:none; /* убирается маркированый список */
+  text-decoration:none;
+}
+
+
+
+.menu_link{
+  display:block;
+  padding: 2rem 1.5rem;
+  will-change: color;
+  transition: color .25s ease-out; /* Медленный наплыв цвета на ссылке */
+  font-weight:500;
+  color:#fff;
+  text-decoration:none;
+  text-transform:uppercase; /* Заглавные буквы */
+}
+
+
+@media (min-width: 601px){        /* Уточнение */
+  .menu_list{
+    display:flex;          /* адаптация под телефон!! */
+  }
+  
+  .menu_group{
+    flex-grow:1;   /* кнопки по всей ширине экрана!! */
+  }
+  .menu_link{
+    position:relative;
+    overflow:hidden;
+  }
+}
+
+.menu_link:before, .menu_link:after{   /* очищение места возле текста на кнопках меню */
+  content:"";
+  width:0;
+  height: 3px;
+  background-color: #fff;
+  will-change: width; /* что именно будет меняться (ширина) */
+  transition: width .05s ease-out; 
+  position :absolute;
+  bottom:0;
+}
+
+.menu_link:before{  /* что именно будет меняться (ширина) */
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.menu_link:after{
+  right:50%;
+  transform:translateX(50%);
+}
+
+.menu_link:hover:before, .menu_link:hover:after{
+  width:100%;
+  transition-duration: .15s;
+}
+
+
+
+
+
+/* Эффекты */ 
+
+.menu_link:hover{
+  color:#D888FF;
+  text-decoration:none;  /* Подчеркивание убралось */
+}
+
+
+/* Карусель */
+
+.container-fluid{
+  position:relative;
+  overflow:hidden;
+  width:100%;
+  height:700px;
+  background-attachment:fixed;
+}
+
+/* Разметка блока */
+.container-fluid .slider{
+  position:absolute;
+  background-position:center;
+  width:500%;
+  height:100%;
+  animation: animate 30s linear infinite;
+}
+
+.container-fluid .slider .slide{
+  position:relative;
+  width:20%;
+  height:100%;
+  float:left;
+}
+
+/* Высота текста */
+
+.container-fluid .slider .slide .caption{
+  position:absolute;
+  bottom: 100px;
+  left:90px;
+  right:60px;
+  padding:70px;
+  transition:0.5s;
+}
+
+
+.container-fluid .slider .slide .caption h2{
+  transition:0.5s;
+  font-family:Georgia;
+  font-size:50px;
+  font-weight:bold;
+  color:#fff;
+  text-align:center;
+}
+
+.container-fluid .slider .slide .caption p{
+  transition:0.5s;
+  font-family:Georgia;
+  font-size:30px;
+  font-weight:bold;
+  color:#fff;
+  text-align:center;
+}
+
+.container-fluid .slider .slide.slide1{
+  background:url(https://i.artfile.me/wallpaper/02-05-2014/1920x1080/priroda-gory-utro-nebo-sneg-les-osen-824477.jpg);
+  background-size: cover;
+  background-position:center;
+  background-attachment:fixed;
+  text-shadow: 2px 4px 2px black, 0 0 1em #848484; /* тень текста */
+}
+
+.container-fluid .slider .slide.slide2{
+  background:url(https://img2.akspic.com/image/22429-mount_scenery-park-mountain-highland-desert-1920x1080.jpg);
+  background-size: cover;
+  background-position:center;
+  background-attachment:fixed;
+  text-shadow: 2px 4px 2px black, 0 0 1em #848484;
+}
+
+.container-fluid .slider .slide.slide3{
+  background:url(https://cdn.oboi7.com/7c58f5ee00e1aa681eb0624c07aba3d0b4302b81/gory-oblaka-pejzazhi-priroda-sneg-osen-lesa-nebo.jpg);
+  background-size: cover;
+  background-position:center;
+  background-attachment:fixed;
+  text-shadow: 2px 4px 2px black, 0 0 1em #848484;
+}
+
+.container-fluid .slider .slide.slide4{
+  background:url(https://s1.1zoom.ru/b5050/475/Scenery_Mountains_Sky_476332_2880x1800.jpg);
+  background-size: cover;
+  background-position:center;
+  background-attachment:fixed;
+  text-shadow: 2px 4px 2px black, 0 0 1em #848484;
+}
+
+
+/* Анимация карусели */
+
+@keyframes animate{
+  0%{
+    left:0;
+  }
+  20%{
+    left:0%;
+  }
+  25%{
+    left:-100%;
+  }
+  45%{
+    left:-100%;
+  }
+  50%{
+    left:-200%;
+  }
+  70%{
+    left:-200%;
+  }
+  75%{
+    left:-300%;
+  }
+  95%{
+    left:-300%;
+  }
+  100%{
+    left:-300%;
+  }
+  100%{
+    left:0%;
+  }
+  
+}
+
+
+@media (max-width: 768px){
+  .container-fluid .slider .slide .caption{
+    bottom: 20px;
+    left:20px;
+    right:20px;
+    padding:20px;
+  }
+
+  .container-fluid .slider .slide .caption h2{
+    margin:0 0 20px;
+    padding:0;
+    color:#fff;
+    font-size: 50px;
+  }
+  
+  .container-fluid .slider .slide .caption p{
+    margin:0;
+    padding:0;
+    color:#fff;
+    font-size: 30px;
+  }
+}
+
+/* Css с карточками */
+
+body{
+  margin:0;
+  padding:0;
+  Font-family:sans-serif;
+  background:#F0F8FF;
+}
+
+.imgDi33{
+  background:url(http://oboi.cc/uploads/new/big/oboik.ru_13084.jpg);
+  width:100%;
+  height:80vh;
+  background-size: cover;
+  background-position:center;
+}
+
+.tlik33{
+  background:url(https://img.freepik.com/free-photo/_53876-42925.jpg?size=626&ext=jpg);
+  
+}
+
+.container33{
+  max-width:1000px;
+  margin:0 auto;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-around;
+}
+
+.card33{
+  position:relative;
+  margin:10% 1%;
+  width: 300px;
+  height: 400px;
+  background:#fff;
+  transform-style:preserve-3d;
+  transform:perspective(2000px);
+  transform:1.4s;
+  box-shadow:inset 300px 0 50 px rgba(0,0,0,.5);
+}
+.card33:hover{ /* Поворот */
+  z-index:1000;
+  transform:perspective(2000px) rotate(-10deg);
+  box-shadow:inset 20px 3 50 px rgba(0,0,0,.5);
+}
+
+.card33 .imgBox33{
+  position:relative;
+  width:101%;
+  height:100%;
+  border:1px solid #000;
+  box-sizing:border-box;
+  transform-origin:left;
+  z-index:1;
+  transform:1s;
+}
+
+.card33:hover .imgBox33{
+  transform:rotateY(-135deg);
+}
+
+.card33 .imgBox33 .img{
+  position:relative;
+  top:0;
+  left:0;
+  width:101%;
+  height:100%;
+  object-fit:cover;
+}
+
+.card33 .details33{
+  position:absolute;
+  top:0;
+  left:0;
+  box-sizing:border-box;
+  padding:20px;
+}
+
+img{
+  width:100%;
+  height:100%;
+}
+
+.details33 h1{
+  font-size:20px;
+}
+
+.details33 p{
+  font-size:14px;
+}
+
+
+.klister{
+  cursor: pointer;
+  font-family: Georgia;
+  font-size: 25px;
+}
+
+
+
+
+
+
+
+
